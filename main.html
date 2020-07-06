@@ -4,23 +4,102 @@
     <meta charset="utf-8">
     <title>jQuery Demo</title>
     <link type="css/txt" rel="stylesheet" href="stylesheet.css">
-    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-
-      $( document ).ready(function() {
-        alert("Welcome!");
-      });
-
-      $( document ).ready(function() {
-      $( "a" ).click(function( event ) {
-      alert( "Thanks for visiting!" );
-      });
-      });
+      $('a').addClass('test');
+      //$('p').removeClass('num');
     </script>
+    <style>
+      a.test {
+          font-weight: bold;
+      }
+      .num {
+        color:blue;
+        font-size: 40px;
+        font-weight: bold;
+      }
+      </style>
   </head>
   <body>
     <h1>Hello! This is my page for learning jQuery</h1>
     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     <a href="http://jquery.com">Click here to learn more about jQuery</a>
+    <script>
+
+
+      /*
+      simplified version of $( document ).ready(function(){code here})
+      $(function(){code here})
+      */
+
+      $(function() {
+
+        alert("Welcome!");
+
+      });
+
+
+
+      $((function() {
+        let counter = 0;
+
+        // upon a click even on the <a>, run the function
+        $( "a" ).click(function( clicked ) {
+
+        alert( "Thanks for visiting!" );
+        if (counter < 1) {
+        // .preventDefault() stop the default behaviour
+        clicked.preventDefault();
+        counter++;
+      };
+
+      });
+    }))
+
+    </script>
+
+    <div id="numGuesser">
+      <h2>This is a Number Guesser!</h2>
+      <p class="num">I made a number guesser with javascript, and now I am trying to make it alive on this page.</p>
+      <!--
+      <div class="history">
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div class="userInput">
+        <label for="answer">Enter a number: </label>
+        <input type="text" name="answer" id="answer">
+        <input type="submit" value="submit">
+      </div>
+      <script>
+        $(function(answer){
+          let counter = 0;
+          let history = [];
+          let ranNum = Math.floor(Math.random()*10);
+          if(Number(answer)=== NaN || answer === null) {
+            alert('Not a number! Try again!')
+          } else if (history.includes(Number(answer))) {
+            alert('Guessed before! Try again!')
+          } else {
+            while (answer[answer.length-1] !== ranNum) {
+              counter++;
+              history.push(Number(answer));
+              if(Number(answer) === ranNum) {
+                alert(`You got it! You took ${counter} attempts!`)
+                break;
+              } else if(answer > ranNum) {
+                alert('Too high! Try again!')
+              } else {
+                alert('Too low! Try again!')
+              }
+            }
+          }
+        })
+      </script>
+      -->
+    </div>
+
+
   </body>
 </html>
